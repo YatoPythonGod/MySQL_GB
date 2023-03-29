@@ -38,7 +38,7 @@ SELECT *
 FROM low_price_car;
 
 -- 3. Создайте представление, в котором будут только автомобили марки “Шкода” и “Ауди”
-
+-- Skoda нет в моей таблице, взял kia
 
 CREATE OR REPLACE VIEW  kia_audi AS
 	SELECT *
@@ -66,7 +66,7 @@ VALUES
     
 SELECT 
 	t.*,
-    TIMEDIFF(LEAD (station_time, 1, NULL)  OVER (PARTITION BY train_id), station_time)
+    TIMEDIFF(LEAD (station_time, 1, NULL)  OVER (PARTITION BY train_id), station_time) AS time_to_next_station
     FROM train_schedule t;
     
 
